@@ -18,3 +18,15 @@ model Post {
 
     @@index([name])
 }
+
+model User {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  password String
+  products Int[]   @relation(fields: [id], references: [Product])
+}
+
+model Product {
+    id       Int     @id @default(autoincrement())
+    name     String
+}
